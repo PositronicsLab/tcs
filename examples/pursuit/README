@@ -1,0 +1,40 @@
+In the build directory for the pursuit example.
+-------------------------------------------------------------------------------
+-TCS PURSUIT EXPERIMENT-
+-------------------------------------------------------------------------------
+To run the tcs experiment:
+> sudo ./pursuit-tcs-coordinator -s=0.01 pursuit.xml
+Alternatively to render [not recommended as time guarantees are marginal]:
+> sudo ./pursuit-tcs-coordinator -s=0.01 -r pursuit.xml
+
+Note: If tcs exits poorly as indicated by not receiving the message "coordinator
+received SIGTERM" at the end of a trial, then use the following top command to
+filter for pursuit processes and manually kill them.  A good exit should always 
+print the above message regardless of whether the program returns to an active
+command prompt.
+> top -p $(pgrep -d',' pursuit)
+-------------------------------------------------------------------------------
+-GAZEBO PURSUIT EXPERIMENT-
+-------------------------------------------------------------------------------
+To run the gazebo experiment:
+> source setup.sh
+> gazebo pursuit.world
+To nice at highest system priority [recommended for pseudo equivalent priority as tcs]
+> sudo -i
+> [change to the tcs pursuit build directory as su]
+> source /usr/local/share/gazebo/setup.sh
+> source setup.sh
+> nice -n -20 gazebo pursuit.world
+- Or alternatively just gazebo server to not render [most comparable to tcs]
+> nice -n -20 gzserver pursuit.world
+
+-------------------------------------------------------------------------------
+-MOBY PURSUIT EXPERIMENT-
+-------------------------------------------------------------------------------
+To run the moby experiment( Assuming Moby built in ~/Moby/build ):
+> ~/Moby/build/moby-driver -s=0.01 -p=libpursuit-moby-predator-controller.so,libpursuit-moby-prey-controller.so pursuit.xml
+Alternatively to render:
+> ~/Moby/build/moby-driver -s=0.01 -r -p=libpursuit-moby-predator-controller.so,libpursuit-moby-prey-controller.so pursuit.xml
+To nice at highest system priority [most comparable to tcs]:
+> sudo nice -n -20 ~/Moby/build/moby-driver -s=0.01 -p=libpursuit-moby-predator-controller.so,libpursuit-moby-prey-controller.so pursuit.xml
+

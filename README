@@ -1,0 +1,14 @@
+TCS is an initialism for Time Consistent Simulation and is a research platform 
+designed to explore the application of temporal constraints within robotic 
+simulation. It is designed and built on vanilla Ubuntu 12.04. 
+
+Refer to the LICENSE file for licensing information
+
+Requires:
+  Pthreads
+  Boost (v.1.48  *1.46 probably ok*)
+  Ravelin [https://github.com/edrumwri/Ravelin]
+  Moby [https://github.com/edrumwri/Moby]
+
+No initial versioning at this point as it is a work in progress and not 
+explicitly intended for distribution at this time.
