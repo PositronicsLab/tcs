@@ -1,3 +1,22 @@
+Dependencies:
+  Ravelin
+   - Robotics Matrix Vector Linear Algebra Library 
+   - https://github.com/edrumwri/Ravelin
+  Moby 
+   - Multi-Body Dynamics Simulator 
+   - https://github.com/edrumwri/Moby
+  OMPL 
+   - Open Motion Planning Library
+   - [http://ompl.kavrakilab.org/
+   - legacy, non-critical but still has some references to
+  Gazebo 
+   - Robotics Simulator
+   - http://gazebosim.org/
+  GSL 
+   - Gnu Scientific Library
+   - http://www.gnu.org/software/gsl/
+
+
 In the build directory for the pursuit example.
 -------------------------------------------------------------------------------
 -TCS PURSUIT EXPERIMENT-

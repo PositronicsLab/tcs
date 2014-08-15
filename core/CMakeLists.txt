@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8.7)
+
 project( tcs_core )
 
 set( TCS_HEADERS
@@ -20,7 +21,6 @@ set( TCS_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/tcs/dynamics_data.h
   ${CMAKE_CURRENT_SOURCE_DIR}/include/tcs/dynamics_plugin.h
   ${CMAKE_CURRENT_SOURCE_DIR}/include/tcs/dynamics.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/tcs/channels.h  # needs generalization for API
 )
 
 set( TCS_SOURCES
@@ -48,13 +48,7 @@ set( TCS_LIBRARIES
   ${RT_LIBRARIES}
   ${DL_LIBRARIES}
   ${PTHREAD_LIBRARIES}
-  ${MOBY_LIBRARIES}
-#  ${OMPL_LIBRARIES}
-#  ${GSL_LIBRARIES}
   ${BOOST_LIBRARIES}
-  ${RAVELIN_LIBRARIES}
-  libboost_system-mt.so
-  libRavelin.so
 )
 
 include_directories( ${TCS_INCLUDE_DIRS} )
@@ -72,7 +66,7 @@ set( TCS_LIBRARY
 )
 
 # build any additional subdirectories
-#add_subdirectory( test )
+add_subdirectory( test )
 
 # set the variables in PARENT_SCOPE as well
 set( TCS_INCLUDE_DIR ${TCS_INCLUDE_DIR} PARENT_SCOPE )

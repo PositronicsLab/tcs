@@ -98,14 +98,13 @@ void timer_c::destroy( void ) {
 /// @param type defines whether to arm as a one-shot or periodic timer.
 /// @param period_nsec the period in nanoseconds that the timer is requested
 /// to have.
-/// @param ts_req the requested time for the timer to arm.
-/// @param ts_arm a timestamp that is generated when the timer is armed.
-/// @param cpu_hz the speed of the processor.
 /// @return indicator of operation success or specified error.
 #include <stdio.h>
 timer_c::error_e timer_c::arm( const type_e& type, const unsigned long long& period_nsec ) {
   struct itimerspec its;
   struct timespec tspec = nanoseconds_to_timespec( period_nsec );
+
+  //printf( "timespec: %d, %d\n", tspec.tv_sec, tspec.tv_nsec );
 
   if( type == ONESHOT ) {
     its.it_interval.tv_sec = 0;
@@ -184,4 +183,35 @@ timer_c::error_e timer_c::arm( const type_e& type, const unsigned long long& per
   return ERROR_NONE;
 }
 
+/*
+//-----------------------------------------------------------------------------
+/// Arms a realtime timer.
+/// @param type defines whether to arm as a one-shot or periodic timer.
+/// @param period_sec the period in seconds (double) that the timer is requested
+/// to have.
+/// @return indicator of operation success or specified error.
+timer_c::error_e timer_c::arm( const type_e& type, realtime_t period_sec ) {
+  struct itimerspec its;
+  struct timespec tspec = realtime_to_timespec( period_sec );
+
+  printf( "timespec: %d, %d\n", tspec.tv_sec, tspec.tv_nsec );
+
+  if( type == ONESHOT ) {
+    its.it_interval.tv_sec = 0;
+    its.it_interval.tv_nsec = 0;
+    its.it_value.tv_sec = tspec.tv_sec;
+    its.it_value.tv_nsec = tspec.tv_nsec;
+  } else if( type == PERIODIC ) {
+    its.it_interval.tv_sec = tspec.tv_sec;
+    its.it_interval.tv_nsec = tspec.tv_nsec;
+    its.it_value.tv_sec = tspec.tv_sec;
+    its.it_value.tv_nsec = tspec.tv_nsec;
+  }
+
+  if( timer_settime( _id, 0, &its, NULL ) == -1 ) 
+    return ERROR_SETTIME;
+
+  return ERROR_NONE;
+}
+*/
 //-----------------------------------------------------------------------------

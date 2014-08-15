@@ -56,6 +56,8 @@ double timespec_to_real( const struct timespec& ts );
 realtime_t timespec_to_realtime( const struct timespec& ts );
 
 struct timespec nanoseconds_to_timespec( const unsigned long long& nsec );
+
+struct timespec realtime_to_timespec( realtime_t t );
  
 //-----------------------------------------------------------------------------
 

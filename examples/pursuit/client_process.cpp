@@ -6,18 +6,16 @@
 
 #include <unistd.h>
 #include <signal.h>
+#include <errno.h>
 
 #include <tcs/log.h>
 #include <tcs/time.h>
 #include <tcs/os.h>
 #include <tcs/notification.h>
 #include <tcs/message.h>
-
-#include <tcs/channels.h>
-
 #include <tcs/osthread.h>
 
-#include <errno.h>
+#include "channels.h"
 
 //-----------------------------------------------------------------------------
 log_p info;

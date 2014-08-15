@@ -6,7 +6,7 @@ set( LIBS
   ${TCS_LIBRARY}
   ${TCS_LIBRARIES}
   ${TCS_PURSUIT_EXPERIMENT_LIBRARIES}
-  libboost_thread.so
+  #libboost_thread.so
 )
 
 include_directories( ${TCS_INCLUDE_DIR} )

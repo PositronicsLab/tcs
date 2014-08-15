@@ -64,6 +64,7 @@ public:
 
   error_e arm( const type_e& type, const unsigned long long& period_nsec );
   error_e arm( const type_e& type, const unsigned long long& period_nsec, const timestamp_t& ts_req, timestamp_t& ts_arm, const cpu_speed_t& cpu_hz );
+//  error_e arm( const type_e& type, realtime_t period_nsec );
 
 };
 

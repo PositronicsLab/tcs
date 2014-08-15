@@ -6,23 +6,21 @@
 
 #include <unistd.h>
 #include <signal.h>
+#include <errno.h>
 
 #include <tcs/log.h>
 #include <tcs/time.h>
 #include <tcs/os.h>
 #include <tcs/notification.h>
 #include <tcs/message.h>
-
-#include <tcs/channels.h>
-
 #include <tcs/osthread.h>
 
+#include "../channels.h"
 #include "../experiment.h"
 #include "../moby_xml.h"
 #include "../moby_space.h"
 #include "../moby_ship.h"
 
-#include <errno.h>
 
 //-----------------------------------------------------------------------------
 log_p info;

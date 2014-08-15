@@ -19,7 +19,7 @@
 #include <tcs/osthread.h>
 #include <tcs/dynamics.h>
 
-#include <tcs/channels.h>
+#include "../channels.h"
 
 #include "../experiment.h"
 

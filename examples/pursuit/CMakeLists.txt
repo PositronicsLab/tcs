@@ -2,6 +2,14 @@ cmake_minimum_required( VERSION 2.8 )
 
 project( tcs_pursuit_experiment )
 
+find_package( Moby REQUIRED )
+include( FindPkgConfig )
+if( PKG_CONFIG_FOUND )
+  pkg_check_modules( RAVELIN ravelin )
+endif()
+include_directories( ${RAVELIN_INCLUDE_DIRS} )
+link_directories( ${RAVELIN_LIBRARY_DIRS} )
+
 find_package( GSL REQUIRED )
 find_package( OMPL REQUIRED )
 include( FindPkgConfig )
@@ -15,6 +23,7 @@ SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 set( TCS_PURSUIT_EXPERIMENT_HEADERS
+  ${CMAKE_CURRENT_SOURCE_DIR}/channels.h
   ${CMAKE_CURRENT_SOURCE_DIR}/experiment.h
   ${CMAKE_CURRENT_SOURCE_DIR}/aabb.h
   ${CMAKE_CURRENT_SOURCE_DIR}/plane.h
@@ -30,7 +39,6 @@ set( TCS_PURSUIT_EXPERIMENT_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/ship.h
   ${CMAKE_CURRENT_SOURCE_DIR}/moby_space.h
   ${CMAKE_CURRENT_SOURCE_DIR}/moby_ship.h
-#  ${PURSUIT_HEADERS}
 )
 
 set( TCS_PURSUIT_EXPERIMENT_SOURCES
@@ -38,12 +46,14 @@ set( TCS_PURSUIT_EXPERIMENT_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/ship.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/moby_space.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/moby_ship.cpp
-#  ${PURSUIT_SOURCES}
 )
 
 set( TCS_PURSUIT_EXPERIMENT_LIBRARIES 
+  ${MOBY_LIBRARIES}
+  ${RAVELIN_LIBRARIES}
   ${OMPL_LIBRARIES}
   ${GSL_LIBRARIES}
+  libRavelin.so
 )
  
 # Copy data files
